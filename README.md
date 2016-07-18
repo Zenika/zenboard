@@ -9,7 +9,7 @@ Clone from the Git repository :
 git clone https://github.com/Zenika/zenboard.git
 ```
 
-Configure your ZenBoard [as you want it](#Zenboard-configuration).
+Configure your ZenBoard [as you want it](#zenboard-configuration).
 
 Start it in development mode (with hot reload) :
 ```
@@ -19,15 +19,12 @@ npm start
 
 ## Zenboard configuration
 
-La configuration du dashboard est réalisée via le fichier :
-```
-src/config.js
-```
-Il définit l'ensemble des plugins à utiliser et leur position au niveau du dashboard.
+La configuration du dashboard est réalisée via le fichier `src/config.js`, il définit l'ensemble des plugins à utiliser et leur position au niveau du dashboard.
 
+### config.js syntax
 > _A compléter_
 
-## Plugins
+### Plugins
 
 - [x] Logo Zenika - [docs](src/plugins/ZenikaLogo/README.md)
 - [ ] OpenWeather (small & big)
@@ -40,18 +37,6 @@ Il définit l'ensemble des plugins à utiliser et leur position au niveau du das
 - [ ] Google Traffic
 - [ ] API Open data nantes ?
 
-## TODOs
-
-- [ ] Doc pour créer des plugins
-- [ ] Intégrer LESS (Sass c'est galère sur rpi)
-- [ ] Brancher codacy
-- [ ] Mettre en place avec docker (voir sur rpi)
-- [ ] HDMI CEC :
-  * https://github.com/Pulse-Eight/libcec
-  * https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=70923
-  * https://github.com/pmorissette/nodecec
-
-
 ## Install ZenBoard on Raspberry Pi
 
 ### Installing the Pi
@@ -62,7 +47,6 @@ Il définit l'ensemble des plugins à utiliser et leur position au niveau du das
 sudo raspi-config
 ```
 > Choose "Expand root partition to fill SD card" option.
-
 4. Update & upgrade (can take few minutes)
 ```
 sudo apt-get update
@@ -86,7 +70,7 @@ cd ~
 git clone https://github.com/Zenika/zenboard.git
 ```
 
-**Copy** your [configuration file](#Zenboard-configuration) into `src/config.js`
+:warning: Copy your [configuration file](#zenboard-configuration) into `src/config.js`
 
 ##### Installing application dependencies
 ```
@@ -128,7 +112,7 @@ Add the following lines to that same file :
 ##### Start ZenBoard on boot
 Optionally, you can configure your Pi to start ZenBoard on boot.
 In `/home/pi/`, create the file called zenboard-start.sh with the following content:
-```
+```bash
 #!/bin/bash
 export DISPLAY=:0
 export XAUTHORITY=/home/pi/.Xauthority
@@ -142,6 +126,19 @@ chmod +x /home/pi/zenboard-start.sh
 Then, edit the file `/home/pi/.config/lxsession/LXDE-pi/autostart` and add the following line to the end: `/home/pi/zenboard-start.sh`
 
 Reboot the Pi and you should be good to go.
+
+
+## TODOs
+
+- [ ] Doc pour créer des plugins
+- [ ] Intégrer LESS (Sass c'est galère sur rpi)
+- [ ] Brancher codacy
+- [ ] Mettre en place avec docker (voir sur rpi)
+- [ ] HDMI CEC :
+  * https://github.com/Pulse-Eight/libcec
+  * https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=70923
+  * https://github.com/pmorissette/nodecec
+
 
 ## Inspired by
 
