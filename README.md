@@ -11,7 +11,7 @@ git clone https://github.com/Zenika/zenboard.git
 
 Configure your ZenBoard [as you want it](#zenboard-configuration).
 
-Start it in development mode (with hot reload) :
+Start in development mode (with hot reload) :
 ```
 npm install
 npm start
@@ -40,14 +40,15 @@ La configuration du dashboard est réalisée via le fichier `src/config.js`, il 
 ## Install ZenBoard on Raspberry Pi
 
 ### Installing the Pi
-1. [Download Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (version full)
-2. Flash with [Etcher](http://www.etcher.io/) or with your favorite SD card flashing process
-3. Expand SD Card file system
+* [Download Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (version full)
+* Flash with [Etcher](http://www.etcher.io/) or with your favorite SD card flashing process
+* Expand SD Card file system
 ```
 sudo raspi-config
 ```
-> Choose "Expand root partition to fill SD card" option.
-4. Update & upgrade (can take few minutes)
+Choose "Expand root partition to fill SD card" option.
+
+* Update & upgrade (can take few minutes)
 ```
 sudo apt-get update
 sudo apt-get upgrade
