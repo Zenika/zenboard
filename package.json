@@ -1,0 +1,63 @@
+{
+  "name": "zenboard",
+  "version": "0.0.1",
+  "description": "Evolutive dashboard screen made by Zenika",
+  "main": "main.js",
+  "scripts": {
+    "start": "concurrently -k 'babel-node webpack/server.js' 'npm run electron-dev'",
+    "prod": "npm run build && npm run electron-prod",
+    "build": "babel-node webpack/bundle.js",
+    "electron-dev": "NODE_ENV=development electron -r babel-register -r babel-polyfill .",
+    "electron-prod": "NODE_ENV=production electron -r babel-register -r babel-polyfill ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zenika/zenboard.git"
+  },
+  "keywords": [
+    "dashboard",
+    "zenika"
+  ],
+  "author": "bpetetot",
+  "license": "MIT",
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.4",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "babel-register": "^6.9.0",
+    "concurrently": "^2.2.0",
+    "css-loader": "^0.23.1",
+    "electron-prebuilt": "^1.2.7",
+    "eslint": "^3.1.0",
+    "eslint-plugin-react": "^5.2.2",
+    "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.22.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.1",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.1",
+    "webpack-target-electron-renderer": "^0.4.0"
+  },
+  "dependencies": {
+    "immutable": "^3.8.1",
+    "react": "^15.2.1",
+    "react-addons-css-transition-group": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
+    "weather-icons": "github:erikflowers/weather-icons",
+    "whatwg-fetch": "^1.0.0"
+  }
+}

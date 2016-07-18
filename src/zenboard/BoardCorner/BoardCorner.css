@@ -1,0 +1,23 @@
+.topLeft {
+  left: 10px;
+  position: absolute;
+  top: 10px;
+}
+
+.topRight {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.bottomLeft {
+  bottom: 10px;
+  left: 10px;
+  position: absolute;
+}
+
+.bottomRight {
+  bottom: 10px;
+  position: absolute;
+  right: 10px;
+}
