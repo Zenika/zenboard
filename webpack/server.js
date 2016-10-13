@@ -3,7 +3,7 @@ import webpack from 'webpack';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 
-import {development as config} from './webpack.config';
+import {development as config, port} from './webpack.config';
 
 const compiler = webpack(config);
 const app = express();
@@ -26,4 +26,4 @@ app.use(webpackDevMiddleware(compiler, {
 
 app.use(webpackHotMiddleware(compiler));
 
-app.listen(9000);
+app.listen(port);

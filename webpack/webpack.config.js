@@ -4,6 +4,8 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import webpackTargetElectronRenderer from 'webpack-target-electron-renderer'
 
+export const port = 9000;
+
 const commonModules = {
   loaders: [{
     test: /\.jsx?$/,
@@ -35,13 +37,13 @@ const commonModules = {
 
 const development = {
   entry: [
-    'webpack-hot-middleware/client?reload=true&path=http://localhost:9000/__webpack_hmr',
+    `webpack-hot-middleware/client?reload=true&path=http://localhost:${port}/__webpack_hmr`,
     './src/index'
   ],
   module: commonModules,
   output: {
     path:  path.resolve(__dirname, '../dist'),
-    publicPath: 'http://localhost:9000/',
+    publicPath: `http://localhost:${port}/`,
     filename: 'bundle.js'
   },
   resolve: {
