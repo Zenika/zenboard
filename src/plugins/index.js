@@ -4,6 +4,7 @@ import ZenikaLogo from './ZenikaLogo/ZenikaLogo'
 import BoardInfo from './BoardInfo/BoardInfo'
 import PhotoDisplay from './PhotoDisplay/PhotoDisplay'
 import OpenWeather from './OpenWeather/OpenWeather'
+import Tweets from './Tweets/Tweets'
 
 const plugins = List([
   {
@@ -21,6 +22,10 @@ const plugins = List([
   {
     name: 'BoardInfo',
     component: BoardInfo
+  },
+  {
+    name: 'Tweets',
+    component: Tweets
   }
 ])
 
