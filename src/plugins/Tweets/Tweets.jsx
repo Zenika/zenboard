@@ -25,14 +25,14 @@ class Tweets extends Component {
 
   handleTweet (tweet) {
     const tweets = [...this.state.tweets, tweet]
-    if (tweets.length > 10) {
+    if (tweets.length > this.props.numberOfTweetsDisplayed) {
       tweets.shift()
     }
     this.setState({ tweets })
   }
 
   componentWillMount() {
-    const streams = this.props.tracks.forEach(track => {
+    this.props.tracks.forEach(track => {
        this.Twit.stream("statuses/filter", { track: track })
         .on("tweet", this.handleTweet)
     })
@@ -51,6 +51,7 @@ Tweets.propTypes = {
   consumer_secret: PropTypes.string,
   access_token: PropTypes.string,
   access_token_secret: PropTypes.string,
+  numberOfTweetsDisplayed: PropTypes.number,
   tracks: PropTypes.arrayOf(PropTypes.string)
 }
 
