@@ -13,42 +13,45 @@ class Tweets extends Component {
       tweets: []
     }
 
-    this.T = new Twit({
-      consumer_key:         "YHB8AQNKvPPPHX82qQOpTbGk2",
-      consumer_secret:      "zzn3BrlT9yX0TD5N2FPPoqDCkbUGTIoLsBNlwNCsOr6VeyaTGT",
-      access_token:         "3060034006-9LmpxpFRjrBdQRJr54CMiAi7WXKLO1L7q6BaW0Q",
-      access_token_secret:  "rVggvU5SnvTr1OVGyygU9vQRSzrQolurkFqPyRCYiVeTR",
-      timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
+    this.Twit = new Twit({
+      consumer_key: this.props.consumer_key,
+      consumer_secret: this.props.consumer_secret,
+      access_token: this.props.access_token,
+      access_token_secret: this.props.access_token_secret
     })
 
     this.handleTweet = this.handleTweet.bind(this)
   }
 
   handleTweet (tweet) {
-    const tweets = this.state.tweets.concat([tweet])
+    const tweets = [...this.state.tweets, tweet]
     if (tweets.length > 10) {
       tweets.shift()
     }
-    this.setState({ tweets: tweets })
+    this.setState({ tweets })
   }
 
-  componentDidMount() {
-    const streams = this.props.tracks.map(track => {
-      return this.T.stream("statuses/filter", { track: track })
-    })
-
-    streams.forEach(stream => {
-      stream.on("tweet", this.handleTweet)
+  componentWillMount() {
+    const streams = this.props.tracks.forEach(track => {
+       this.Twit.stream("statuses/filter", { track: track })
+        .on("tweet", this.handleTweet)
     })
   }
 
   render() {
-    return <div className={classes.Tweets}>{this.state.tweets
-      .concat([])
+    return <div className={classes.Tweets}>{[...this.state.tweets]
       .reverse()
-      .map((tweet, index) => (<Tweet key={index} className="TOTO" data={tweet}/>))}</div>;
+      .map((tweet, index) => (<Tweet key={index} data={tweet}/>))}</div>;
   }
 
+}
+
+Tweets.propTypes = {
+  consumer_key: PropTypes.string,
+  consumer_secret: PropTypes.string,
+  access_token: PropTypes.string,
+  access_token_secret: PropTypes.string,
+  tracks: PropTypes.arrayOf(PropTypes.string)
 }
 
 export default Tweets
