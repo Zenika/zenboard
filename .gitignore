@@ -3,3 +3,5 @@ node_modules
 src/config.js
 dist
 npm-debug.log
+*.iml
+yarn.lock

@@ -1,4 +1,5 @@
 import { app, BrowserWindow, powerSaveBlocker } from 'electron'
+import { port } from './webpack/webpack.config'
 
 // Prevent the monitor from going to sleep.
 powerSaveBlocker.start('prevent-display-sleep')
@@ -15,7 +16,7 @@ function createWindow () {
   let kioskMode = true;
 
   if (environment === 'development') {
-    appUrl = 'http://localhost:9000/index.html'
+    appUrl = `http://localhost:${port}/index.html`
     kioskMode = false;
   }
 
