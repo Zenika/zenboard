@@ -36,7 +36,7 @@
     "babel-register": "^6.9.0",
     "concurrently": "^2.2.0",
     "css-loader": "^0.23.1",
-    "electron-prebuilt": "^1.2.7",
+    "electron": "^1.4.3",
     "eslint": "^3.1.0",
     "eslint-plugin-react": "^5.2.2",
     "express": "^4.14.0",
