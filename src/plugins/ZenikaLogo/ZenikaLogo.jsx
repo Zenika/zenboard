@@ -7,7 +7,7 @@ class ZenikaLogo extends Component {
   render() {
     return (
       <div>
-        <img src={logo} style={{width: "50%"}} />
+        <img src={logo} role="presentation" style={{ width: '50%' }} />
       </div>
     )
   }

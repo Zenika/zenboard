@@ -2,24 +2,24 @@ const CONFIG = {
   interval: 10000,
   displays: {
     topRight: {
-      plugin: 'ZenikaLogo'
+      plugin: 'ZenikaLogo',
     },
     topLeft: {
-      plugin: 'ZenikaLogo'
+      plugin: 'ZenikaLogo',
     },
     bottomLeft: {
-      plugin: 'BoardInfo'
+      plugin: 'BoardInfo',
     },
     bottomRight: {},
-    content : [
+    content: [
       {
-        plugin: 'BoardInfo'
+        plugin: 'BoardInfo',
       },
       {
-        plugin: 'ZenikaLogo'
-      }
-    ]
-  }
+        plugin: 'ZenikaLogo',
+      },
+    ],
+  },
 }
 
-export default CONFIG;
+export default CONFIG
