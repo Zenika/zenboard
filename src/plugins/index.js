@@ -5,23 +5,23 @@ import BoardInfo from './BoardInfo/BoardInfo'
 import PhotoDisplay from './PhotoDisplay/PhotoDisplay'
 import OpenWeather from './OpenWeather/OpenWeather'
 
-const plugins = List([
+const plugins = new List([
   {
     name: 'ZenikaLogo',
-    component: ZenikaLogo
+    component: ZenikaLogo,
   },
   {
     name: 'OpenWeather',
-    component: OpenWeather
+    component: OpenWeather,
   },
   {
     name: 'photos',
-    component: PhotoDisplay
+    component: PhotoDisplay,
   },
   {
     name: 'BoardInfo',
-    component: BoardInfo
-  }
+    component: BoardInfo,
+  },
 ])
 
 export default plugins

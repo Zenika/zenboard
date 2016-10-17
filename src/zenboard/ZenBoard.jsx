@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 
 import 'whatwg-fetch'
 
@@ -11,18 +11,14 @@ class ZenBoard extends Component {
   render() {
     return (
       <div className={styles.zenboard}>
-        <BoardCorner position='topLeft' />
-        <BoardCorner position='topRight' />
+        <BoardCorner position="topLeft" />
+        <BoardCorner position="topRight" />
         <BoardDisplay />
-        <BoardCorner position='bottomLeft' />
-        <BoardCorner position='bottomRight' />
+        <BoardCorner position="bottomLeft" />
+        <BoardCorner position="bottomRight" />
       </div>
     )
   }
 }
 
-ZenBoard.propTypes = {
-  display: PropTypes.object
-}
-
-export default ZenBoard;
+export default ZenBoard
