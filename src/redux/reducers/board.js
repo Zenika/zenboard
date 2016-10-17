@@ -1,5 +1,5 @@
-import CONFIG from '../../config'
 import { NEXT_DISPLAY } from '../actions'
+import CONFIG from '../../config'
 
 export const initState = {
   interval: CONFIG.interval,
