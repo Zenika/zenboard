@@ -6,6 +6,4 @@
 
 ### Propriétés
 
-tracks : Une liste de mot-clés à scruter sur twitter (ex: zenika, #zenika, @zenika)
-
-### Modes d'affichage
+tracks : Une chaîne de caractères contenant des mot-clés (séparés par des virgules) à scruter sur twitter (ex: zenika,#zenika,@zenika)

@@ -24,10 +24,8 @@ class Tweets extends Component {
   }
 
   componentWillMount() {
-    this.props.tracks.forEach((track) => {
-      this.Twit.stream('statuses/filter', { track })
-        .on('tweet', this.handleTweet)
-    })
+    this.Twit.stream('statuses/filter', { track: this.props.track })
+      .on('tweet', this.handleTweet)
   }
 
   handleTweet(tweet) {
@@ -58,7 +56,7 @@ Tweets.propTypes = {
   access_token: PropTypes.string.isRequired,
   access_token_secret: PropTypes.string.isRequired,
   numberOfTweetsDisplayed: PropTypes.number,
-  tracks: PropTypes.arrayOf(PropTypes.string).isRequired,
+  track: PropTypes.string.isRequired,
 }
 
 export default Tweets
