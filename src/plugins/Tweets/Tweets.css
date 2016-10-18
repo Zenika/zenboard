@@ -1,0 +1,28 @@
+.Tweets {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+:global(.tweet) {
+  background-color: transparent !important;
+  color: white !important;
+  font-size: 1.2em !important;
+  line-height: 1.3em !important;
+  border-bottom: 1px solid rgba(225, 232, 237, 0.5) !important;
+}
+
+:global(.QuoteTweet) {
+  border: 1px solid rgba(225, 232, 237, 0.5) !important;
+}
+
+:global(.tweet .footer) {
+  display: none !important;
+}
+
+:global(.tweet .tweet-url) {
+}
+
+:global(.tweet .account-group .fullname) {
+  color: #cecece !important;
+}

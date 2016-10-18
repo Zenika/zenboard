@@ -18,6 +18,9 @@ const commonModules = {
     test: /\.png?$/,
     loaders: ['file-loader']
   }, {
+    test: /\.json?$/,
+    loaders: ['json-loader']
+  }, {
     test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,
     loader: "url?limit=10000&mimetype=application/font-woff"
   }, {
