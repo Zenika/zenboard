@@ -10,20 +10,27 @@ class Tweets extends Component {
     super(props)
 
     this.state = {
-      tweets: []
+      tweets: [],
     }
 
     this.Twit = new Twit({
       consumer_key: this.props.consumer_key,
       consumer_secret: this.props.consumer_secret,
       access_token: this.props.access_token,
-      access_token_secret: this.props.access_token_secret
+      access_token_secret: this.props.access_token_secret,
     })
 
     this.handleTweet = this.handleTweet.bind(this)
   }
 
-  handleTweet (tweet) {
+  componentWillMount() {
+    this.props.tracks.forEach((track) => {
+      this.Twit.stream('statuses/filter', { track })
+        .on('tweet', this.handleTweet)
+    })
+  }
+
+  handleTweet(tweet) {
     const tweets = [...this.state.tweets, tweet]
     if (tweets.length > (this.props.numberOfTweetsDisplayed || 10)) {
       tweets.shift()
@@ -31,19 +38,14 @@ class Tweets extends Component {
     this.setState({ tweets })
   }
 
-  componentWillMount() {
-    this.props.tracks.forEach(track => {
-       this.Twit.stream("statuses/filter", { track })
-        .on("tweet", this.handleTweet)
-    })
-  }
-
   render() {
     return (
       <div className={classes.Tweets}>
-        {[...this.state.tweets]
+        {
+          [...this.state.tweets]
           .reverse()
-          .map(tweet => (<Tweet key={tweet.id} data={tweet}/>))}
+          .map(tweet => (<Tweet key={tweet.id} data={tweet} />))
+        }
       </div>
     )
   }
@@ -56,7 +58,7 @@ Tweets.propTypes = {
   access_token: PropTypes.string.isRequired,
   access_token_secret: PropTypes.string.isRequired,
   numberOfTweetsDisplayed: PropTypes.number,
-  tracks: PropTypes.arrayOf(PropTypes.string).isRequired
+  tracks: PropTypes.arrayOf(PropTypes.string).isRequired,
 }
 
 export default Tweets

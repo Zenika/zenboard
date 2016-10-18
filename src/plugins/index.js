@@ -21,12 +21,12 @@ const plugins = new List([
   },
   {
     name: 'BoardInfo',
-    component: BoardInfo
+    component: BoardInfo,
   },
   {
     name: 'Tweets',
-    component: Tweets
-  }
+    component: Tweets,
+  },
 ])
 
 export default plugins
