@@ -7,6 +7,7 @@ import OpenWeather from './OpenWeather/OpenWeather'
 import Tweets from './Tweets/Tweets'
 import Scores from './Scores/Scores'
 import AgencyNews from './AgencyNews/AgencyNews'
+import ZTalks from './ZTalks/ZTalks'
 
 const plugins = new List([
   {
@@ -36,6 +37,10 @@ const plugins = new List([
   {
     name: 'AgencyNews',
     component: AgencyNews,
+  },
+  {
+    name: 'ZTalks',
+    component: ZTalks,
   },
 ])
 
