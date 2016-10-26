@@ -1,0 +1,10 @@
+.legende {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid;
+  text-align: right;
+}
+
+.grad {
+}

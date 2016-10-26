@@ -1,0 +1,16 @@
+.plugin {
+  display: flex;
+  position: relative;
+  height: 30vh;
+  width: 18vw;
+  margin-right: -10px;
+  margin-bottom: -10px;
+}
+
+.legende {
+  width: 20%;
+}
+
+.level {
+  flex: 1;
+}

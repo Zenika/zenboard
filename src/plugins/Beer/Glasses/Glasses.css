@@ -1,0 +1,17 @@
+.glasses {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  height: 100%;
+  width: 80%;
+  margin-left: 20%;
+  text-align: center;
+  font-size: 2em;
+  position: absolute;
+  transition: font-size 1s;
+}
+
+:global(.animate) {
+  font-size: 3em;
+}
