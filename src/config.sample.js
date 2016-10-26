@@ -11,6 +11,13 @@ const CONFIG = {
       plugin: 'BoardInfo',
     },
     bottomRight: {},
+    footer: {
+      plugin: 'AgencyNews',
+      props: {
+        apiKey: '',
+        sheetId: '',
+      },
+    },
     content: [
       {
         plugin: 'BoardInfo',

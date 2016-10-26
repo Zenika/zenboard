@@ -9,6 +9,7 @@ export const initState = {
   topRight: CONFIG.displays.topRight,
   bottomLeft: CONFIG.displays.bottomLeft,
   bottomRight: CONFIG.displays.bottomRight,
+  footer: CONFIG.displays.footer,
 }
 
 /* Display the next display of the board */
