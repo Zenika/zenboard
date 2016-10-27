@@ -6,13 +6,13 @@ import Glasses from './Glasses'
 import styles from './Beer.css'
 
 firebase.initializeApp({
-  apiKey: 'AIzaSyBTCjk8-33XgC_iDEM3wNTnBoYE5lbFaBE',
-  authDomain: 'tz-beer-flow.firebaseapp.com',
-  databaseURL: 'https://tz-beer-flow.firebaseio.com',
-  storageBucket: 'tz-beer-flow.appspot.com',
-  messagingSenderId: '340785075558',
+  apiKey: "AIzaSyDNBiKuVmrwmxKYvAqV5jPLJwOQzzJKluw",
+  authDomain: "devfest-beer-flow.firebaseapp.com",
+  databaseURL: "https://devfest-beer-flow.firebaseio.com",
+  storageBucket: "devfest-beer-flow.appspot.com",
+  messagingSenderId: "35349781656"
 })
-firebase.auth().signInWithEmailAndPassword('zenika@zenika.com', 'zenika').catch((error) => {
+const auth = firebase.auth().signInWithEmailAndPassword('zenika@zenika.com', 'zenika').catch((error) => {
   console.error(error)
 })
 
@@ -34,11 +34,8 @@ class Beer extends Component {
       glassSizeL: props.glassSizeL || DEFAULT_OPTIONS.glassSizeL,
     }
 
-    // Not that great, this variable assure we connect only once callbacks
-    let connected = false
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user && !connected) {
-        connected = true
+    auth.then((user) => {
+      if (user) {
         const ref = firebase.database().ref('flow')
         ref.on('child_added', this.newData)
       }
