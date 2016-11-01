@@ -23,7 +23,7 @@ class PhotoDisplay extends Component {
   }
 
   selectPhotos() {
-    return _.slice(_.shuffle(this.state.photos), 0, 9)
+    return _.slice(_.shuffle(this.state.photos), 0, 6)
   }
 
   render() {
