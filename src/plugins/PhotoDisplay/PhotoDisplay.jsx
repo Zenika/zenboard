@@ -1,33 +1,34 @@
 import React, { Component, PropTypes } from 'react'
+import _ from 'lodash'
 
-import classes from './PhotoDisplay.css'
-import Photo from './Photo'
+import PhotoGallery from './PhotoGallery'
 
 const api = (driveFolderId, apikey) => `https://www.googleapis.com/drive/v3/files?q='${driveFolderId}'+in+parents&key=${apikey}`
+const img = (id, apikey) => `https://drive.google.com/uc?export=view&id=${id}&key=${apikey}`
 
 class PhotoDisplay extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      response: { files: [] },
-    }
+    this.state = { photos: [] }
   }
 
   componentDidMount() {
-    fetch(api(this.props.driveFolderId, this.props.apikey))
+    const { driveFolderId, apikey } = this.props
+    fetch(api(driveFolderId, apikey))
       .then(response => response.json())
-      .then(json => this.setState({ response: json }))
+      .then((json) => {
+        this.setState({ photos: json.files.map(f => img(f.id, apikey)) })
+      })
+  }
+
+  selectPhotos() {
+    return _.slice(_.shuffle(this.state.photos), 0, 9)
   }
 
   render() {
-    const { apikey } = this.props
     return (
-      <div className={classes.photoDisplay}>
-        {this.state.response.files.map(f =>
-          <Photo key={f.id} driveImageId={f.id} apikey={apikey} />
-        )}
-      </div>
+      <PhotoGallery photos={this.selectPhotos()} />
     )
   }
 

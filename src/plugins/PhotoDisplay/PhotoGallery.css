@@ -1,0 +1,40 @@
+.photoGallery {
+  display: block  !important;
+  overflow: scroll !important;
+  height: 100%;
+}
+
+.photoGallery ul {
+  list-style-type: none;
+  padding: 0;
+  justify-content: center;
+  text-align: center;
+}
+
+.photoGallery ul li div {
+  float: left;
+	position: relative;
+  margin: 10px;
+}
+
+.photoGallery ul li img {
+  width: calc(50vw / 2);
+	border: 8px solid #fff;
+	box-shadow: 0px 2px 15px #000;
+}
+
+.pic-1 {
+	z-index: 1;
+	-webkit-transform: rotate(-10deg);
+	-moz-transform: rotate(-10deg);
+}
+.pic-2 {
+	z-index: 5;
+	-webkit-transform: rotate(-3deg);
+	-moz-transform: rotate(-3deg);
+}
+.pic-3 {
+	z-index: 3;
+	-webkit-transform: rotate(4deg);
+	-moz-transform: rotate(4deg);
+}
