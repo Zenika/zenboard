@@ -6,7 +6,7 @@ import PhotoGallery from './PhotoGallery'
 const api = (driveFolderId, apikey) => `https://www.googleapis.com/drive/v3/files?q='${driveFolderId}'+in+parents&key=${apikey}`
 const img = (id, apikey) => `https://drive.google.com/uc?export=view&id=${id}&key=${apikey}`
 
-class PhotoDisplay extends Component {
+class GDrivePhotoGallery extends Component {
 
   constructor(props) {
     super(props)
@@ -22,22 +22,18 @@ class PhotoDisplay extends Component {
       })
   }
 
-  selectPhotos() {
+  selectRandomPhotos() {
     return _.slice(_.shuffle(this.state.photos), 0, 6)
   }
 
   render() {
-    return (
-      <PhotoGallery photos={this.selectPhotos()} />
-    )
+    return <PhotoGallery photos={this.selectRandomPhotos()} />
   }
 
 }
-
-PhotoDisplay.propTypes = {
-  type: PropTypes.string,
+GDrivePhotoGallery.propTypes = {
   driveFolderId: PropTypes.string,
   apikey: PropTypes.string,
 }
 
-export default PhotoDisplay
+export default GDrivePhotoGallery
