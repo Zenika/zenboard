@@ -12,36 +12,53 @@ import classes from './AgencyNews.css'
 
 const sheetsApi = 'https://sheets.googleapis.com/v4/spreadsheets'
 
+const defaultFetchInterval = 60
 const defaultRollInterval = 15
+
+const defaultTitle = 'Zenika'
 
 const white = '#fff'
 const zColor = '#b31835'
 
-const defaultIfBlank = (s, sDefault) => (isEmpty(trim(s)) ? sDefault : s)
+const isBlank = s => isEmpty(trim(s))
+const defaultIfBlank = (s, sDefault) => (isBlank(s) ? sDefault : s)
 
 export default class extends Component {
 
   static propTypes = {
     apiKey: PropTypes.string.isRequired,
     sheetId: PropTypes.string.isRequired,
+    fetchInterval: PropTypes.number,
     rollInterval: PropTypes.number,
   }
 
   constructor(props) {
     super(props)
     this.state = {
-      loading: true,
-      error: false,
-      data: [],
-      index: 0,
+      news: false,
     }
+    this.data = []
+    this.index = 0
   }
 
   componentDidMount() {
     const {
+      fetchInterval = defaultFetchInterval,
+    } = this.props
+
+    this.fetch()
+    this.fetchInterval = setInterval(this.fetch, fetchInterval * 1000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.fetchInterval)
+    clearInterval(this.rollInterval)
+  }
+
+  fetch = () => {
+    const {
       apiKey,
       sheetId,
-      rollInterval = defaultRollInterval,
     } = this.props
     const dataUri = `${sheetsApi}/${sheetId}/values/A1:Z100?key=${apiKey}`
 
@@ -56,62 +73,55 @@ export default class extends Component {
       .then(data => data.values || [])
       .then(data => [data.shift() || [], data])
       .then(([props, data]) => data.map(values => zipObject(props, values)))
-      .then(data => this.setState(prevState => ({
-        ...prevState,
-        loading: false,
-        data,
-      })))
-      .then(() => {
-        this.rollInterval = setInterval(this.roll, rollInterval * 1000)
+      .then(data => data.filter(news => !isBlank(news.text)))
+      .then((data) => {
+        this.data = data
       })
-      .catch(error => this.setState(prevState => ({
-        ...prevState,
-        loading: false,
-        error,
-      }))
-      )
-  }
+      .then(() => {
+        if (!this.rollInterval) {
+          const {
+            rollInterval = defaultRollInterval,
+          } = this.props
 
-  componentWillUnmount() {
-    clearInterval(this.rollInterval)
+          this.roll()
+          this.rollInterval = setInterval(this.roll, rollInterval * 1000)
+        }
+      })
   }
 
   roll = () => {
+    if (this.data.length === 0) {
+      this.index = -1
+    } else {
+      this.index = this.index + 1 >= this.data.length ? 0 : this.index + 1
+    }
+
+    const news = this.index === -1 ? false : this.data[this.index]
+
     this.setState(prevState => ({
       ...prevState,
-      index: prevState.index + 1 >= prevState.data.length ? 0 : prevState.index + 1,
+      news,
     }))
   }
 
   render() {
-    const { data, loading, index, error } = this.state
+    const { news } = this.state
 
-    if (loading) {
-      return <div>Loading...</div>
-    }
-
-    if (error) {
-      return <div>Error while loading agency news : {error}</div>
-    }
-
-    if (data.length === 0) {
+    if (!news) {
       return <div />
     }
 
-    const news = data[index]
-
-    const {
-      title,
-      text,
-    } = news
+    const { text } = news
 
     let {
+      title,
       titleColor,
       titleBgColor,
       color,
       backgroundColor,
     } = news
 
+    title = defaultIfBlank(title, defaultTitle)
     titleColor = defaultIfBlank(titleColor, white)
     titleBgColor = defaultIfBlank(titleBgColor, zColor)
     color = defaultIfBlank(color, zColor)
@@ -123,7 +133,7 @@ export default class extends Component {
         transitionEnterTimeout={500}
         transitionLeaveTimeout={500}
       >
-        <div key={index} className={classes.news}>
+        <div key={this.index} className={classes.news}>
           <div
             className={classes.title}
             style={{ color: titleColor, backgroundColor: titleBgColor }}
