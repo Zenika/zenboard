@@ -23,7 +23,7 @@ class Scores extends Component {
 
   render() {
     return (
-      <div className={classes.Scores}>
+      <div className={classes.scores}>
         {this.state.scores.map(score => (<Score key={score.email} data={score} />))}
       </div>
     )
