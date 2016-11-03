@@ -5,6 +5,7 @@ import BoardInfo from './BoardInfo/BoardInfo'
 import PhotoDisplay from './PhotoDisplay/PhotoDisplay'
 import OpenWeather from './OpenWeather/OpenWeather'
 import Tweets from './Tweets/Tweets'
+import Scores from './Scores/Scores'
 
 const plugins = new List([
   {
@@ -26,6 +27,10 @@ const plugins = new List([
   {
     name: 'Tweets',
     component: Tweets,
+  },
+  {
+    name: 'Scores',
+    component: Scores,
   },
 ])
 
