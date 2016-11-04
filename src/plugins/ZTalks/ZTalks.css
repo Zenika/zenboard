@@ -1,0 +1,130 @@
+.zTalks {
+  width: 66% !important;
+  left: 17% !important;
+}
+
+.zTalks h2 {
+  width: 100%;
+  text-align: center;
+  font-weight: 200;
+  font-size: 1.8em;
+  margin: 12px 0;
+}
+
+.zTalksContainer{
+  display: flex;
+  width: 100%;
+}
+
+.zTalksContainer h3 {
+  padding-left: 5px;
+  text-transform: capitalize;
+  font-size: 1.4em;
+  font-weight: 200;
+  margin-bottom: 8px;
+}
+
+.zTalksColumn {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.zTalk {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  transition: all .3s cubic-bezier(.25,.8,.25,1);
+  display: flex;
+  margin: 5px;
+  padding: 5px;
+  background-color: #fafafa;
+  border-radius: 2px;
+}
+
+.zTalk .zTalkAvatars {
+  max-width: 28%;
+  overflow: hidden;
+}
+
+.zTalk .zTalkAvatars img {
+  border-radius: 50%;
+  padding: 5px;
+  width: 60px;
+  height: 60px;
+}
+
+.zTalk .zTalkContent {
+  padding: 5px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.zTalk .zTalkContent .zTalkContentImportant {
+  flex: 1;
+}
+
+.zTalk .zTalkContent .zTalkContentTitle {
+  font-size: 1.4em;
+  font-weight: 200;
+  color: #000;
+}
+
+.zTalk .zTalkContent .zTalkContentSpeakers {
+  font-style: italic;
+  font-size: .8em;
+  color: #999;
+  text-align: left;
+  font-weight: 400;
+  padding-top: 4px;
+}
+
+.zTalk .zTalkTime {
+  max-width: 28%;
+  color: rgba(45,59,97,0.8);
+  font-size: 2.8em;
+  font-weight: 200;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding: 0 5px;
+}
+
+.zTalk .zTalkTime .zTalkTimeSeparator {
+  display: flex;
+  margin: auto;
+}
+
+.zTalk .zTalkTime .zTalkTimeSeparator div {
+  width: 3px;
+  height: 3px;
+  background-color: rgba(45,59,97,.8);
+  margin: 0 7px;
+  border-radius: 50%;
+}
+
+.zTalk .zTalkContent .zTalkInfos {
+  padding-top: 4px;
+}
+
+.zTalk .zTalkContent .zTalkInfos span {
+  border-radius: 15px;
+  background-color: #999;
+  color: #FFF;
+  font-size: .8em;
+  font-weight: 300;
+  padding: 2px 6px;
+  margin: 0 4px;
+}
+
+.zTalk .zTalkInfos span.zTalkTypeConference {
+  background-color: #e1722a;
+}
+
+.zTalk .zTalkInfos span.zTalkTypeCodelab {
+  background-color: #387066;
+}
+
+.zTalk .zTalkInfos span.zTalkTypeQuickie{
+  background-color: purple;
+}

@@ -71,6 +71,8 @@
     "redux": "^3.5.2",
     "twit": "^2.2.5",
     "weather-icons": "github:erikflowers/weather-icons",
-    "whatwg-fetch": "^1.0.0"
+    "whatwg-fetch": "^1.0.0",
+    "lodash": "^4.16.4",
+    "moment": "^2.15.1"
   }
 }
