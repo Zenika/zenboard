@@ -18,21 +18,31 @@ class GDrivePhotoGallery extends Component {
     fetch(api(driveFolderId, apikey))
       .then(response => response.json())
       .then((json) => {
-        this.setState({ photos: json.files.map(f => img(f.id, apikey)) })
+        this.setState({ photos: json.files.map((f) => {
+          return { id: f.id, src: img(f.id, apikey) }
+        }) })
       })
   }
 
-  selectRandomPhotos() {
-    return _.slice(_.shuffle(this.state.photos), 0, 9)
+  selectRandomPhotos(nbPhotos) {
+    return _.slice(_.shuffle(this.state.photos), 0, nbPhotos)
   }
 
   render() {
-    return <PhotoGallery photos={this.selectRandomPhotos()} />
+    const photos = this.selectRandomPhotos(this.props.nbPhotos)
+    return <PhotoGallery photos={photos} />
   }
 
 }
+
+GDrivePhotoGallery.defaultProps = {
+  nbPhotos: 4,
+}
+
+
 GDrivePhotoGallery.propTypes = {
   driveFolderId: PropTypes.string,
+  nbPhotos: PropTypes.number,
   apikey: PropTypes.string,
 }
 

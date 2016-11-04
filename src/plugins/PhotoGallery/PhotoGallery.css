@@ -1,13 +1,13 @@
 .photoGallery {
-  flex-direction: row !important;
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  left: 20% !important;
-  justify-content: center !important;
-  width: 60% !important;
+  justify-content: center;
+  align-items: center;
 }
 
 .photoGallery img {
-  width: calc(100vw / 6);
+  width: 25vw;
 	border: 8px solid #fff;
 	box-shadow: 0px 2px 15px #000;
 }
