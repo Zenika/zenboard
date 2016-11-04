@@ -23,7 +23,7 @@ class GDrivePhotoGallery extends Component {
   }
 
   selectRandomPhotos() {
-    return _.slice(_.shuffle(this.state.photos), 0, 6)
+    return _.slice(_.shuffle(this.state.photos), 0, 9)
   }
 
   render() {

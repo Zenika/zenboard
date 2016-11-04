@@ -1,7 +1,5 @@
 .scores {
   overflow: hidden;
-  width: calc(50% - 40px)!important;
-  left: 25%!important;
   padding: 20px;
 }
 
@@ -36,7 +34,7 @@
 }
 
 .score .scoreContent span {
-  font-size: 1.8em;
+  font-size: 1em;
   font-weight: 200;
   color: #000;
   padding-left: 20px;
@@ -45,7 +43,7 @@
 .score .scoreAmount {
   max-width: 28%;
   color: rgba(45,59,97,0.8);
-  font-size: 2.8em;
+  font-size: 1.2em;
   font-weight: 200;
   display: flex;
   flex-direction: column;
