@@ -3,21 +3,38 @@ import React, { Component, PropTypes } from 'react'
 import classes from './Scores.css'
 import Score from './Score'
 
+const defaultPullFrequency = 10000
+
 class Scores extends Component {
 
   constructor(props) {
     super(props)
 
+    this.interval = null
     this.state = {
       scores: [],
     }
   }
 
   componentDidMount() {
-    fetch(this.props.sourceUrl)
+    this.fetchScores(this.props.sourceUrl, ({ results }) => this.setState({ scores: results }))
+
+    this.interval = setInterval(() => {
+      this.fetchScores(this.props.sourceUrl, ({ results }) => this.setState({ scores: results }))
+    }, this.props.pullFrequency || defaultPullFrequency)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval)
+  }
+
+  fetchScores(url, callback) {
+    fetch(url)
     .then(response => response.json())
-    .then(({ results }) => {
-      this.setState({ scores: results })
+    .then(data => {
+      if (callback && typeof callback === 'function') {
+        callback(data)
+      }
     })
   }
 
@@ -32,6 +49,7 @@ class Scores extends Component {
 
 Scores.propTypes = {
   sourceUrl: PropTypes.string.isRequired,
+  pullFrequency: PropTypes.number,
 }
 
 export default Scores
