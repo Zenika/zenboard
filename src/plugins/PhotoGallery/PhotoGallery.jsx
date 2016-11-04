@@ -9,9 +9,9 @@ function computeClassname() {
 
 const PhotoGallery = ({ photos }) => (
   <div className={classes.photoGallery}>
-    {photos.map((photo, index) =>
-      <div key={index} className={computeClassname()}>
-        <img src={photo} role="presentation" />
+    {photos.map(photo =>
+      <div key={photo.id} className={computeClassname()}>
+        <img src={photo.src} role="presentation" />
       </div>
     )}
   </div>
