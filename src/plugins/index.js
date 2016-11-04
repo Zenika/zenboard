@@ -1,10 +1,10 @@
 import { List } from 'immutable'
 
-import ZenikaLogo from './ZenikaLogo'
-import BoardInfo from './BoardInfo'
-import PhotoDisplay from './PhotoDisplay'
-import OpenWeather from './OpenWeather'
-import Tweets from './Tweets'
+import ZenikaLogo from './ZenikaLogo/ZenikaLogo'
+import BoardInfo from './BoardInfo/BoardInfo'
+import PhotoGallery from './PhotoGallery/GDrivePhotoGallery'
+import OpenWeather from './OpenWeather/OpenWeather'
+import Tweets from './Tweets/Tweets'
 import Scores from './Scores/Scores'
 import Beer from './Beer'
 import AgencyNews from './AgencyNews/AgencyNews'
@@ -21,7 +21,7 @@ const plugins = new List([
   },
   {
     name: 'photos',
-    component: PhotoDisplay,
+    component: PhotoGallery,
   },
   {
     name: 'BoardInfo',

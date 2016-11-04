@@ -1,0 +1,20 @@
+.photoGallery {
+  flex-direction: row !important;
+  flex-wrap: wrap;
+}
+
+.photoGallery img {
+  width: calc(100vw / 4);
+	border: 8px solid #fff;
+	box-shadow: 0px 2px 15px #000;
+}
+
+.pic-1 {
+	transform: rotate(-10deg);
+}
+.pic-2 {
+	transform: rotate(-3deg);
+}
+.pic-3 {
+  transform: rotate(4deg);
+}
