@@ -41,6 +41,7 @@ class Scores extends Component {
   render() {
     return (
       <div className={classes.scores}>
+        {this.props.title && (<h2>{this.props.title}</h2>)}
         {this.state.scores.map(score => (<Score key={score.email} data={score} />))}
       </div>
     )
@@ -48,6 +49,7 @@ class Scores extends Component {
 }
 
 Scores.propTypes = {
+  title: PropTypes.string,
   sourceUrl: PropTypes.string.isRequired,
   pullFrequency: PropTypes.number,
 }
