@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
+import md5 from 'blueimp-md5'
 
 import classes from './Scores.css'
-import md5 from 'blueimp-md5'
 
 const Score = ({ data }) => (
   <div className={classes.score}>

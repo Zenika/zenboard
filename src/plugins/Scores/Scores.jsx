@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 
 import classes from './Scores.css'
-import Score from './Score.jsx'
+import Score from './Score'
 
 class Scores extends Component {
 
