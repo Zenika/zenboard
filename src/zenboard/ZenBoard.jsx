@@ -16,6 +16,7 @@ class ZenBoard extends Component {
         <BoardDisplay />
         <BoardCorner position="bottomLeft" />
         <BoardCorner position="bottomRight" />
+        <BoardCorner position="footer" />
       </div>
     )
   }

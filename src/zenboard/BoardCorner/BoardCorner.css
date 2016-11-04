@@ -24,3 +24,9 @@
   position: absolute;
   right: 10px;
 }
+
+.footer {
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+}

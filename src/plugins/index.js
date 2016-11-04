@@ -6,6 +6,7 @@ import PhotoDisplay from './PhotoDisplay/PhotoDisplay'
 import OpenWeather from './OpenWeather/OpenWeather'
 import Tweets from './Tweets/Tweets'
 import Scores from './Scores/Scores'
+import AgencyNews from './AgencyNews/AgencyNews'
 
 const plugins = new List([
   {
@@ -31,6 +32,10 @@ const plugins = new List([
   {
     name: 'Scores',
     component: Scores,
+  },
+  {
+    name: 'AgencyNews',
+    component: AgencyNews,
   },
 ])
 
