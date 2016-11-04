@@ -26,7 +26,7 @@ const ZTalk = ({ talk }) => {
             {
               talk.speakers.map((speaker, i) =>
                 <span key={i} className={classes.zTalkContentSpeaker}>
-                {i !== 0 ? ' et ' : ''} {speaker.firstname} {speaker.lastname}
+                  {i !== 0 ? ' et ' : ''} {speaker.firstname} {speaker.lastname}
                 </span>)
             }
           </div>
@@ -39,7 +39,7 @@ const ZTalk = ({ talk }) => {
       </div>
       <div className={classes.zTalkTime}>
         <div className={classes.zTalkTimeHour}>{talk.date.format('HH')}</div>
-        <div className={classes.zTalkTimeSeparator}></div>
+        <div className={classes.zTalkTimeSeparator} />
         <div className={classes.zTalkTimeMinut}>{talk.date.format('mm')}</div>
       </div>
     </div>
