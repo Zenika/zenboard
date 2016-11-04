@@ -1,0 +1,23 @@
+.container {
+  position: relative;
+}
+
+.level,
+.bubble {
+  position: absolute;
+  background: linear-gradient(to bottom right, #df6601, #ffb301);
+  background-image: url('http://imgur.com/download/w6Qvnyw'); /* source image : http://bgfons.com/upload/beer_texture1955.jpg */
+  background-repeat: no-repeat;
+  background-size: cover;
+  bottom: 0;
+  width: 100%;
+  transition: height 2s;
+}
+
+.bubble {
+  /* background-image: url('http://www.gifs.net/Animation11/Sports/Water_Sports/Bubbles.gif');
+  background-position: top center;
+  background-size: cover;
+  background-repeat: repeat-x;
+  */
+}
