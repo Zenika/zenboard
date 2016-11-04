@@ -31,17 +31,13 @@ class Scores extends Component {
   fetchScores(url, callback) {
     fetch(url)
     .then(response => response.json())
-    .then(data => {
-      if (callback && typeof callback === 'function') {
-        callback(data)
-      }
-    })
+    .then(callback)
   }
 
   render() {
     return (
       <div className={classes.scores}>
-        {this.props.title && (<h2>{this.props.title}</h2>)}
+        <h2>{this.props.title || 'Leaderboard'}</h2>
         {this.state.scores.map(score => (<Score key={score.email} data={score} />))}
       </div>
     )
