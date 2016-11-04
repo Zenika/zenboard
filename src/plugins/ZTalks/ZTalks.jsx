@@ -5,33 +5,33 @@ import ZTalk from './ZTalk'
 
 import classes from './ZTalks.css'
 
-const API = (spreadsheetId, apikey) => `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/A1:F30?key=${apikey}`;
+const api = (spreadsheetId, apikey) => `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/A1:F30?key=${apikey}`
+
+moment.locale('fr')
 
 class ZTalks extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      talks: []
+      talks: [],
     }
-    this.formatTalks.bind(this);
-    moment.locale('fr')
   }
 
   componentDidMount() {
-    fetch(API(this.props.spreadsheetId, this.props.apikey))
+    fetch(api(this.props.spreadsheetId, this.props.apikey))
      .then(response => response.json())
      .then(json => this.formatTalks(json.values))
   }
 
   formatTalks(data) {
-    const headers = data[0];
-    const dateIndex = headers.indexOf('date');
-    const speakersIndex = headers.indexOf('speakers');
-    const titleIndex = headers.indexOf('title');
-    const roomIndex = headers.indexOf('room');
-    const typeIndex = headers.indexOf('type');
-    const durationIndex = headers.indexOf('duration');
+    const headers = data[0]
+    const dateIndex = headers.indexOf('date')
+    const speakersIndex = headers.indexOf('speakers')
+    const titleIndex = headers.indexOf('title')
+    const roomIndex = headers.indexOf('room')
+    const typeIndex = headers.indexOf('type')
+    const durationIndex = headers.indexOf('duration')
 
     const talks = _(data).slice(1)
       .map(t => {
@@ -46,23 +46,23 @@ class ZTalks extends Component {
       })
       .sortBy('date')
       .groupBy(t => t.date.format('dddd Do MMMM'))
-      .value();
+      .value()
 
     this.setState({
-      talks: talks
+      talks,
     })
   }
 
   render() {
-    const {title} = this.props
+    const { title } = this.props
     return (
       <div className={classes.zTalks}>
         <h2>{title}</h2>
         <div className={classes.zTalksContainer}>
           {Object.keys(this.state.talks).map(key =>
-            <div className={classes.zTalksColumn}>
+            <div key={key} className={classes.zTalksColumn}>
               <h3>{key}</h3>
-              {this.state.talks[key].map(talk => <ZTalk talk={talk} />)}
+              {this.state.talks[key].map((talk, index) => <ZTalk key={index} talk={talk} />)}
             </div>
           )}
         </div>
@@ -72,16 +72,10 @@ class ZTalks extends Component {
 
 }
 
-ZTalks.defaultProps = {
-  spreadsheetId: '1UbVLzABevAOricgl3VxPG_9dUr0Fvoeth5NRBJbDQGE',
-  apikey: 'AIzaSyDg0HPlcKUDAcNIvQKnArRLqFPeGXvPhi8',
-  title: 'DevFest Nantes 2016 - Nos talks'
-}
-
 ZTalks.propTypes = {
   spreadsheetId: PropTypes.string,
   apikey: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
 }
 
 export default ZTalks
