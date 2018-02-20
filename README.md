@@ -2,6 +2,9 @@
 
 Built with Electron + React + ES6 + Webpack
 
+## :warning: Discontinued
+This project has been discontinued in favor of [MARCEL](https://github.com/Zenika/MARCEL).
+
 ## Getting started
 
 Clone from the Git repository :
